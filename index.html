@@ -3,60 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL Tables Builder</title>
+    <title>Collection UI</title>
+
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
-    <script src="./assets/js/main.js" defer></script>
-    <script src="./assets/libs/draggable.js"></script>
+    <script src="./lullabyui.js"></script>
+
 </head>
-<body>
-    <div class="bg-neutral-200 w-screen h-screen text-neutral-700 text-sm p-8">
-        <div draggable class="sql-table bg-white rounded flex flex-col gap-2 p-4 w-fit shadow">
-            <input type="text" name="table_name" id="" placeholder="Table Name" spellcheck="false"  class="sql-table-name bg-neutral-100 rounded focus:outline-none p-2 py-1 w-full text-base">
-            <div class="flex flex-col gap-2">
-                <form class="flex w-full justify-between gap-2">
-                    <input type="text" name="column_name" placeholder="Column Name" spellcheck="false" class="w-[110px] focus:outline-none p-2 py-1 border border-neutral-200">
-                    <div x-data="{types: ['INT', 'VARCHAR', 'TEXT', 'DATE']}" class="flex border border-neutral-200 relative justify-start items-center cursor-pointer bg-white">
-                        <select name="type" id="" class="border-none focus:outline-none appearance-none cursor-pointer pl-2 pr-6">
-                            <option selected value="" class="text-neutral-300">Type</option>
-                            <template x-for="type in types">
-                                <option x-text="type"></option>
-                            </template>
-                        </select>
-                        <iconify-icon icon="ep:arrow-up-bold" rotate="180deg" class="absolute right-1 pointer-events-none opacity-75"></iconify-icon>
-                    </div>
-                    <input type="text" name="length" id="" placeholder="Length" spellcheck="false"  class="w-[70px] border border-neutral-200 focus:outline-none p-2 py-1">
-                    <div x-data="{defaults: ['NULL', 'CURRENT_TIMESTAMP']}" class="flex border border-neutral-200 relative justify-start items-center cursor-pointer bg-white">
-                        <select name="default" id="" class="border-none focus:outline-none appearance-none cursor-pointer pl-2 pr-6">
-                            <option selected value="" class="text-neutral-300">Default</option>
-                            <template x-for="value in defaults">
-                                <option x-text="value"></option>
-                            </template>
-                            <option class="bg-neutral-200 py-2">custom</option>
-                        </select>
-                        <iconify-icon icon="ep:arrow-up-bold" rotate="180deg" class="absolute right-1 pointer-events-none opacity-75"></iconify-icon>
-                    </div>
-                    <div x-data="{indexs: ['PRIMARY', 'UNIQUE', 'INDEX', 'FULLTEXT', 'SPATIAL']}" class="flex border border-neutral-200 relative justify-start items-center cursor-pointer bg-white">
-                        <select name="index" id="" class="border-none focus:outline-none appearance-none cursor-pointer pl-2 pr-6">
-                            <option selected value="" class="text-neutral-300">Index</option>
-                            <template x-for="index in indexs">
-                                <option x-text="index"></option>
-                            </template>
-                        </select>
-                        <iconify-icon icon="ep:arrow-up-bold" rotate="180deg" class="absolute right-1 pointer-events-none opacity-75"></iconify-icon>
-                    </div>
-                </form>
+<body class="scrollbar">
+    <div class="p-10 flex flex-col gap-10">
+
+        <!-- Button -->
+        <div class="flex flex-col gap-2">
+            <h1 class="title">Button</h1>
+
+            <div class="flex gap-4">
+                <button class="button">Button</button>
+                <button class="dark-button">Button</button>
             </div>
-            <div class="flex justify-end w-full gap-2 mt-2">
-                <button class="px-3 py-1 rounded shadow bg-red-400 text-white flex justify-center items-center gap-1 hover:bg-red-500 transition-colors"><iconify-icon icon="gg:trash"></iconify-icon>Delete</button>
-                <button class="px-3 py-1 rounded shadow bg-neutral-400 text-white flex justify-center items-center gap-1 hover:bg-neutral-500 transition-colors"><iconify-icon icon="icon-park-outline:clear"></iconify-icon>Clear</button>
-                <button class="px-3 py-1 rounded shadow bg-emerald-400 text-white flex justify-center items-center gap-1 hover:bg-emerald-500 transition-colors"><iconify-icon icon="mingcute:add-fill"></iconify-icon>Add Column</button>
-                <button class="px-3 py-1 rounded shadow bg-amber-400 text-white flex justify-center items-center gap-1 hover:bg-amber-500 transition-colors" onclick="getSQL()"><iconify-icon icon="ph:file-sql-bold"></iconify-icon>Get SQL</button>
+
+        </div>
+
+        <!-- Link -->
+        <div class="flex flex-col gap-2">
+            <h1 class="title">Link</h1>
+
+            <div class="flex gap-4">
+                <a href="#hola" class="link">Link</a>
+                <a href="#hola" class="link px-1">Link</a>
+                <a href="#hola" class="link px-2">Link</a>
+                <a href="#hola" class="link text-lg">Link</a>
+                <a href="#hola" class="link text-xl">Link</a>
+                <a href="#hola" class="link text-2xl">Link</a>
+            </div>
+
+        </div>
+
+        <!-- Badget -->
+        <div class="flex flex-col gap-2">
+            <h1 class="title">Badget</h1>
+
+            <div class="flex gap-4">
+                <p class="badget">Badget</p>
+                <p class="dark-badget">Badget</p>
+            </div>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="flex flex-col gap-2">
+            <h1 class="title">Modal</h1>
+
+            <div class="flex gap-4">
+                <div class="modal">
+                    <button class="button modal-open">Open Modal</button>
+
+                    <div class="modal-container">
+                        <div class="modal-overlay modal-close opacity-50"></div>
+                        <div class="modal-content">
+                            <h1>Modal</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal">
+                    <button class="dark-button modal-open">Open Modal</button>
+
+                    <div class="modal-container">
+                        <div class="modal-overlay modal-close opacity-50"></div>
+                        <div class="dark-modal-content">
+                            <h1>Modal</h1>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+
+        <!-- Card -->
+        <div class="flex flex-col gap-2">
+            <h1 class="title">Card</h1>
+
+            <div class="flex gap-4">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">Card</h1>
+                        <h1 class="card-desc"> Card desc</h1>
+                    </div>
+                    <div class="card-content">
+                        <p class="w-[250px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio incidunt, inventore ipsum quae ullam voluptatibus !</p>
+                    </div>
+                    <div class="card-footer justify-between">
+                        <button class="button">Cancel</button>
+                        <button class="dark-button">Button</button>
+                    </div>
+                </div>
+
+                <div class="dark-card">
+                    <div class="card-header">
+                        <h1 class="dark-card-title">Card</h1>
+                        <h1 class="dark-card-desc"> Card desc</h1>
+                    </div>
+                    <div class="card-content">
+                        <p class="w-[250px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio incidunt, inventore ipsum quae ullam voluptatibus !</p>
+                    </div>
+                    <div class="card-footer justify-between">
+                        <button class="dark-button">Cancel</button>
+                        <button class="button">Button</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 </body>
 </html>
